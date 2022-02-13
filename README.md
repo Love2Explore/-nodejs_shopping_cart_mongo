@@ -1,1 +1,2 @@
-# -nodejs_shopping_cart_mongo
+# nodejs_shopping_cart
+Node JS Shopping Cart

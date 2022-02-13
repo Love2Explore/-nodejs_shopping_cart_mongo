@@ -1,0 +1,35 @@
+<%- include("../includes/head.ejs") %>
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <% if(prods.length > 0 ) { %>
+            <% for (let p of prods) {%>
+            <div class="grid">
+                <article class="card product-item">
+                    <header class="card_header">
+                        <h1 class="product_title"><%= p.title %></h1>
+                    </header>
+                    <div class="card_image">
+                        <img src="<%=p.imageUrl %>" alt="<%= p.title %>">
+                    </div>
+                    <div class="card_content">
+                        <h2 class="product_price"><%= p.price %></h2>
+                        <p class="product_description"><%= p.description %></p>
+                    </div>
+                    <div class="card_actions">
+                        <a href="/admin/edit-product/<%= p._id %>?edit=true" class="btn">Edit</a>
+                        <form action="/admin/delete-product" method="POST">
+                            <input type="hidden" value="<%= p._id %>" name="productid">
+                            <button class="btn" type="submit">Delete</button>
+                        </form>
+                    </div>
+                </article> 
+            </div>
+            <% } %>
+        <% } else {%>    
+            <h1>No Product found</h1>
+        <% } %>    
+
+    </main>
+</body>
+</html>
